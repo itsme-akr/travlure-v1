@@ -51,11 +51,11 @@ export default function PlaceCard({ place }) {
       </div>
 
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-1">
+        <h3 className="font-heading text-lg mb-1">
           {place.name}
         </h3>
 
-        <p className="text-xs text-magenta font-medium mb-2">
+        <p className="text-xs text-magenta font-body mb-2">
           {place.type}
         </p>
 

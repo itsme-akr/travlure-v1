@@ -10,6 +10,7 @@ import MobileNav from "./components/MobileNav";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Footer from "./components/Footer";
 
 import { SaveProvider } from "./context/SaveContext";
 
@@ -40,6 +41,8 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
         </Routes>
         </div>
+
+        <Footer />
 
         {/*MobileNav */}
         <MobileNav/>

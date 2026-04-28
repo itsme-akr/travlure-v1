@@ -49,11 +49,11 @@ export default function PlaceDetail() {
           {place.name}
         </h1>
 
-        <p className="text-lg font-semibold text-yellow-600 mb-1">
+        <p className="text-lg font-body text-yellow-600 mb-1">
           ⭐ {place.rating || "4.0"} Rating
         </p>
 
-        <p className="text-magenta font-medium mb-4">
+        <p className="text-magenta font-body mb-4">
           {place.type} • {place.price}
         </p>
 

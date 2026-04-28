@@ -6,11 +6,6 @@ import FormModal from "./FormModal";
 
 
 export default function ExploreMore() {
-  const [activeForm, setActiveForm] = useState(null);
-  const FORM_TYPES = {
-  FEEDBACK: "feedback",
-  CONTACT: "contact",
-};
 
   const tiles = [
     {
@@ -65,7 +60,7 @@ export default function ExploreMore() {
                 {/* Content */}
                 <div className="p-4 flex items-center justify-center gap-2">
                   {t.icon}
-                  <p className="font-medium text-sm">{t.title}</p>
+                  <p className="font-medium text-body">{t.title}</p>
                 </div>
               </div>
             ))}
@@ -73,68 +68,7 @@ export default function ExploreMore() {
 
         </div>
       </div>
-
-      {/* Feedback + Contact Section */}
-      <div className="bg-[#f4ede2] py-10 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-
-          {/* Tagline */}
-          <div className="flex flex-col items-center mb-6">
-            <FaHeart className="text-gold text-lg mb-2" />
-            <h3 className="text-lg font-heading">Happy to Serve You</h3>
-
-            {/* Divider */}
-            <div className="flex items-center gap-3 mt-3 w-full max-w-sm">
-              <div className="flex-1 h-[1px] bg-gold"></div>
-              <FaStar className="text-gold text-xs" />
-              <div className="flex-1 h-[1px] bg-gold"></div>
-            </div>
-          </div>
-
-          {/* Compact Cards */}
-          <div className="grid md:grid-cols-2 gap-4">
-
-            {/* Feedback */}
-            <div 
-              onClick={() => setActiveForm(FORM_TYPES.FEEDBACK)}
-              className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition text-center">
-              <div className="flex justify-center mb-2">
-                <FiMessageCircle className="text-magenta text-lg" />
-              </div>
-              <h4 className="font-heading text-sm">Feedback</h4>
-              <p className="text-gray-500 text-xs mt-1">
-                Help us improve your experience
-              </p>
-            </div>
-
-            {/* Contact */}
-            <div 
-              onClick={() => setActiveForm(FORM_TYPES.CONTACT)}
-              className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition text-center">
-              <div className="flex justify-center mb-2">
-                <FiMail className="text-magenta text-lg" />
-              </div>
-              <h4 className="font-heading text-sm">Contact</h4>
-              <p className="text-gray-500 text-xs mt-1">
-                Questions or suggestions?
-              </p>
-            </div>
-
-          </div>
-
-          {/* Footer */}
-          <div className="mt-6 text-xs text-gray-500">
-            © 2026 Travlure • Crafted for personalized discovery
-          </div>
-
-        </div>
-      </div>
-
-      <FormModal 
-        type={activeForm} 
-        onClose={() => setActiveForm(null)} 
-      />
-
+    
     </div>
   );
 }

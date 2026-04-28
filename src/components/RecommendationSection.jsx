@@ -67,7 +67,7 @@ export default function RecommendationSection({ filters, places }) {
         <h2 className="text-3xl text-center font-heading">
           Recommended for You
         </h2>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm font-body text-gray-500">
           Based on your preferences and search
         </p>
       </div>

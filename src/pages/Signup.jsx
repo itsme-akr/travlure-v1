@@ -51,11 +51,11 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-cream flex items-center justify-center px-6">
+    <div className="min-h-screen bg-cream pt-28 flex items-center justify-center px-6">
 
       <form
         onSubmit={handleSubmit}
-        className="bg-cream/5 p-8 rounded-3xl shadow-xl w-full max-w-md space-y-4"
+        className="bg-cream p-8 rounded-3xl shadow-xl border border-gold w-full max-w-md space-y-4"
       >
 
         <h2 className="text-2xl font-heading text-center mb-4">

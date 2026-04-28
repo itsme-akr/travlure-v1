@@ -23,6 +23,16 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
+import {
+  GiPlantRoots,
+  GiMeat,
+  GiFishCooked,
+  GiAvocado
+} from "react-icons/gi";
+import { FaLeaf } from "react-icons/fa";
+import { MdEco } from "react-icons/md";
+
+
 export default function ProfileQuiz() {
   const navigate = useNavigate();
 
@@ -85,6 +95,14 @@ export default function ProfileQuiz() {
   { label: "Casual", icon: <LuSmile /> },
 ];
 
+  const dietOptions = [
+  { label: "Vegetarian", icon: <FaLeaf /> },
+  { label: "Vegan", icon: <MdEco /> },
+  { label: "Keto", icon: <GiAvocado /> },
+  { label: "Pescatarian", icon: <GiFishCooked /> },
+  { label: "Non-Vegetarian", icon: <GiMeat /> },
+  { label: "Jain", icon: <GiPlantRoots /> },
+];
 
 
   const finish = () => {
@@ -136,90 +154,94 @@ export default function ProfileQuiz() {
         )}
 
         {/* Q2 */}
-{step === 2 && (
-  <>
-    <h2 className="font-heading text-xl mb-2">
-      Typically what type of vibe do you like?
-    </h2>
+        {step === 2 && (
+          <div className="flex flex-col justify-center items-center min-h-[50vh]">
 
-    <p className="text-sm text-magenta mb-4 font-medium">
-      Choose your top 3 for each category
-    </p>
+            <div className="w-full max-w-5xl max-h-[50vh] overflow-y-auto pr-2">
 
-    <div className="space-y-6 mt-4 pb-4">
+              <h2 className="font-heading text-xl mb-2 text-center">
+                Typically what type of vibe do you like?
+              </h2>
 
-      {categories
-        .filter((cat) => answers.categories.includes(cat.name))
-        .map((cat) => {
-          const selected = answers.vibes?.[cat.name] || [];
+              <p className="text-sm text-magenta mb-4 font-medium text-center">
+                Choose your top 3 for each category
+              </p>
 
-          return (
-            <div key={cat.name} className="bg-[#EFE6D8] p-4 rounded-xl">
+              <div className="space-y-6 mt-4 pb-4">
 
-              {/* Header */}
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 flex items-center justify-center bg-white rounded-lg shadow-sm">
-                  {cat.icon}
-                </div>
-                <h3 className="font-medium text-sm">{cat.name}</h3>
-              </div>
+                {categories
+                  .filter((cat) => answers.categories.includes(cat.name))
+                  .map((cat) => {
+                    const selected = answers.vibes?.[cat.name] || [];
 
-              {/* Vibes */}
-              <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                    return (
+                      <div key={cat.name} className="bg-[#EFE6D8] p-4 rounded-xl">
 
-                {vibes.map((vibe) => {
-                  const isSelected = selected.includes(vibe.label);
-                  const isDisabled =
-                    !isSelected && selected.length >= 3;
+                        {/* Header */}
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-9 h-9 flex items-center justify-center bg-white rounded-lg shadow-sm">
+                            {cat.icon}
+                          </div>
+                          <h3 className="font-medium text-sm">{cat.name}</h3>
+                        </div>
 
-                  return (
-                    <div
-                      key={vibe.label}
-                      onClick={() => {
-                        if (isDisabled) return;
+                        {/* Vibes */}
+                        <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
 
-                        const updated = isSelected
-                          ? selected.filter((v) => v !== vibe.label)
-                          : [...selected, vibe.label];
+                          {vibes.map((vibe) => {
+                            const isSelected = selected.includes(vibe.label);
+                            const isDisabled =
+                              !isSelected && selected.length >= 3;
 
-                        setAnswers((prev) => ({
-                          ...prev,
-                          vibes: {
-                            ...prev.vibes,
-                            [cat.name]: updated,
-                          },
-                        }));
-                      }}
-                      className={`cursor-pointer flex flex-col items-center gap-2 p-2.5 rounded-xl transition
-                        ${
-                          isSelected
-                            ? "bg-magenta text-black"
-                            : "bg-[#FAF6F0] border border-gray-200/50 hover:border-magenta shadow-sm"
-                        }
-                        ${isDisabled ? "opacity-40" : ""}
-                      `}
-                    >
+                            return (
+                              <div
+                                key={vibe.label}
+                                onClick={() => {
+                                  if (isDisabled) return;
 
-                      <div className="w-9 h-9 flex items-center justify-center rounded-md bg-cream">
-                        {vibe.icon}
+                                  const updated = isSelected
+                                    ? selected.filter((v) => v !== vibe.label)
+                                    : [...selected, vibe.label];
+
+                                  setAnswers((prev) => ({
+                                    ...prev,
+                                    vibes: {
+                                      ...prev.vibes,
+                                      [cat.name]: updated,
+                                    },
+                                  }));
+                                }}
+                                className={`cursor-pointer flex flex-col items-center gap-2 p-2.5 rounded-xl transition
+                                  ${
+                                    isSelected
+                                      ? "bg-magenta text-black"
+                                      : "bg-[#FAF6F0] border border-gray-200/50 hover:border-magenta shadow-sm"
+                                  }
+                                  ${isDisabled ? "opacity-40" : ""}
+                                `}
+                              >
+
+                                <div className="w-9 h-9 flex items-center justify-center rounded-md bg-cream">
+                                  {vibe.icon}
+                                </div>
+
+                                <span className="text-xs font-medium text-center">
+                                  {vibe.label}
+                                </span>
+
+                              </div>
+                            );
+                          })}
+
+                        </div>
                       </div>
-
-                      <span className="text-xs font-medium text-center">
-                        {vibe.label}
-                      </span>
-
-                    </div>
-                  );
-                })}
+                    );
+                  })}
 
               </div>
             </div>
-          );
-        })}
-
-    </div>
-  </>
-)}
+          </div>
+        )}
 
         {/* Q3 (Conditional) */}
         {step === 3 && (
@@ -228,21 +250,42 @@ export default function ProfileQuiz() {
               Any dietary preferences?
             </h2>
 
-            <select
-              multiple
-              className="w-full border rounded-lg p-2 mb-4"
-              onChange={(e) =>
-                setAnswers({
-                  ...answers,
-                  diet: [...e.target.selectedOptions].map((o) => o.value),
-                })
-              }
-            >
-              <option>Vegetarian</option>
-              <option>Vegan</option>
-              <option>Jain</option>
-              <option>Gluten-Free</option>
-            </select>
+            <div className="grid grid-cols-2 gap-3">
+              {dietOptions.map((item) => {
+                const selected = answers.diet?.includes(item.label);
+
+                return (
+                  <div
+                    key={item.label}
+                    onClick={() => toggle(item.label, "diet")}
+                    className={`
+                      flex flex-col items-center justify-center gap-2
+                      p-4 rounded-xl cursor-pointer border text-sm font-medium
+                      transition-all duration-200 text-center
+
+                      ${
+                        selected
+                          ? "bg-magenta text-white border-magenta"
+                          : "bg-white border-gray-200 hover:border-magenta"
+                      }
+                    `}
+                  >
+                    <div
+                      className={`
+                        text-xl flex items-center justify-center
+                        ${
+                          selected ? "text-white" : "text-gray-700"
+                        }
+                      `}
+                    >
+                      {item.icon}
+                    </div>
+
+                    <span>{item.label}</span>
+                  </div>
+                );
+              })}
+            </div>
           </>
         )}
 

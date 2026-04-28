@@ -68,13 +68,13 @@ export default function FilterPanel({ onClose, onApply }) {
           ✕
         </button>
 
-        <h2 className="text-lg font-semibold mb-4 text-black">
+        <h2 className="text-lg font-heading mb-4 text-black">
           Refine your search
         </h2>
 
         {/* LOCATION */}
         <div className="mb-4">
-          <p className="text-sm font-medium mb-2 text-black">Location</p>
+          <p className="text-sm font-body mb-2 text-black">Location</p>
 
           <div className="flex gap-4 mb-2 text-black">
             <label>
@@ -124,21 +124,21 @@ export default function FilterPanel({ onClose, onApply }) {
         {/* FILTERS */}
         <div className="grid grid-cols-3 gap-6">
           <div>
-            <p className="text-sm font-semibold mb-2 text-black">Category</p>
+            <p className="text-sm font-body mb-2 text-black">Category</p>
             <div className="flex flex-wrap gap-2">
               {renderChips(categoryOptions, categories, setCategories, 2)}
             </div>
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-2 text-black">Ambiance</p>
+            <p className="text-sm font-body mb-2 text-black">Ambiance</p>
             <div className="flex flex-wrap gap-2">
               {renderChips(ambianceOptions, ambiance, setAmbiance, 2)}
             </div>
           </div>
 
           <div>
-            <p className="text-sm font-semibold mb-2 text-black">Price</p>
+            <p className="text-sm font-body mb-2 text-black">Price</p>
             <div className="flex flex-wrap gap-2">
               {renderChips(priceOptions, price, setPrice, 4)}
             </div>

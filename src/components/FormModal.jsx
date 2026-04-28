@@ -39,7 +39,7 @@ export default function FormModal({ type, onClose }) {
               {type === "feedback" ? "Thank you!" : "Got it!"}
             </h3>
 
-            <p className="text-sm text-gray-600">
+            <p className="text-body text-gray-600">
               {type === "feedback"
                 ? "We appreciate your feedback."
                 : "We'll reach out to you soon."}

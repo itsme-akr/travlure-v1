@@ -20,7 +20,7 @@ export default function RecentSearches({ onSearch }) {
             onClick={() => onSearch(s)}
             className="bg-white rounded-xl p-4 shadow hover:shadow-md cursor-pointer"
           >
-            <p className="text-sm font-medium">
+            <p className="text-sm font-body">
               {s?.query || "Explore"}
             </p>
 

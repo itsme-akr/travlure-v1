@@ -10,7 +10,7 @@ export default function QuizTile({ label, selected, onClick, icon }) {
         }`}
     >
       <div className="text-2xl">{icon}</div>
-      <p className="text-sm font-medium text-center">{label}</p>
+      <p className="text-sm font-body text-center">{label}</p>
     </div>
   );
 }

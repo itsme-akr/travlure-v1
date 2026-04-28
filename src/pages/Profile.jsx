@@ -111,7 +111,7 @@ export default function Profile() {
   {/* AVATAR */}
   <div className="flex flex-col items-center text-center">
     <div className="relative">
-      <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center text-xl font-bold text-white">
+      <div className="w-20 h-20 rounded-full object-cover border-2 border-gold bg-gray-200 overflow-hidden flex items-center justify-center text-xl font-bold text-white">
         {avatar ? (
           <img
             src={avatar}
@@ -204,16 +204,28 @@ export default function Profile() {
     <div>
       <p className="text-gray-500 text-xs mb-1">Vibes</p>
       <div className="flex flex-wrap gap-2">
-        {Object.values(profile?.vibes || {})
-          .flat()
-          .map((item, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 bg-magenta text-white rounded-full text-xs"
-            >
-              {item}
-            </span>
-          ))}
+      {Object.entries(profile?.vibes || {})
+        .filter(([_, vibes]) => vibes && vibes.length > 0)
+        .map(([category, vibes]) => (
+          <div key={category} className="mb-3, border-b pb-3">
+
+            <p className="text-xs text-gray-500 mb-1">
+              {category}
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {vibes.map((v, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-magenta text-white rounded-full text-xs"
+                >
+                  {v}
+                </span>
+              ))}
+            </div>
+
+          </div>
+      ))}
       </div>
     </div>
   </div>
@@ -259,17 +271,29 @@ export default function Profile() {
                 Vibes
               </p>
               <div className="flex flex-wrap gap-2">
-                {Object.values(profile?.vibes || {})
-                  .flat()
-                  .map((item, i) => (
-                    <span
-                      key={i}
-                      className="flex items-center gap-2 px-3 py-1 bg-magenta text-white rounded-full text-sm"
-                    >
-                      <VibeIcon item={item} />
-                      {item}
-                    </span>
-                  ))}
+                {Object.entries(profile?.vibes || {})
+                  .filter(([_, vibes]) => vibes && vibes.length > 0)
+                  .map(([category, vibes]) => (
+                    <div key={category} className="mb-3, border-b pb-3">
+
+                      <p className="text-xs font-medium text-gray-500 mb-1">
+                        {category}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {vibes.map((item, i) => (
+                          <span
+                            key={i}
+                            className="flex items-center gap-2 px-3 py-1 bg-magenta text-white rounded-full text-sm"
+                          >
+                            <VibeIcon item={item} />
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+
+                    </div>
+                ))}
               </div>
             </div>
 

@@ -10,7 +10,7 @@ export default function Hero({ onSearch, onOpenFilters }) {
     "/hero/hero1.jpg",
     "/hero/hero3.jpg",
     "/hero/hero4.jpg",
-    "/hero/hero5.jpg",
+    "/hero/hero-1.jpg",
   ];
 
   // 👇 clone first image at end
@@ -72,13 +72,13 @@ export default function Hero({ onSearch, onOpenFilters }) {
           Your Personal Concierge
         </h1>
 
-        <p className="text-gray-200 text-lg mb-6 max-w-xl">
+        <p className="text-gray-200 text-body mb-6 max-w-xl">
           Discover restaurants, bars, and hidden gems tailored to your vibe.
         </p>
 
         <button
           onClick={() => navigate("/quiz")}
-          className="bg-olive px-6 py-3 rounded-xl text-white font-semibold hover:bg-gold transition mb-10"
+          className="bg-olive px-6 py-3 rounded-xl text-white font-semibold hover:bg-gold transition hover:scale-105 hover:shadow-lg mb-10"
         >
           Take Quiz to Start
         </button>

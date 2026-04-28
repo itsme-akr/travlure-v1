@@ -11,12 +11,37 @@ export default function Discover() {
   const [filters, setFilters] = useState(null);
   const [profile, setProfile] = useState(null);
   const [showFilters, setShowFilters] = useState(false);
-  const [recent, setRecent] = useState([]); // 🔥 NEW
+  const [recent, setRecent] = useState([]);
 
   const resultsRef = useRef(null);
   const navigate = useNavigate();
 
-  // 🔥 SAFE PARSE FUNCTION
+  // ✅ Skip first filters set (from profile)
+  const isInitialFiltersSet = useRef(true);
+
+  useEffect(() => {
+    if (!filters || !resultsRef.current) return;
+
+    // 🚫 Skip first system-triggered filters
+    if (isInitialFiltersSet.current) {
+      isInitialFiltersSet.current = false;
+      return;
+    }
+
+    // ✅ Scroll only for user-triggered changes
+    const yOffset = -100;
+    const y =
+      resultsRef.current.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  }, [filters]);
+
+  // 🔒 Safe parser
   const safeParse = (key) => {
     try {
       const data = localStorage.getItem(key);
@@ -26,7 +51,7 @@ export default function Discover() {
     }
   };
 
-  // 🔥 LOAD PROFILE
+  // 👤 Load profile
   useEffect(() => {
     const parsed = safeParse("userProfile");
 
@@ -39,6 +64,7 @@ export default function Discover() {
 
     setProfile(parsed);
 
+    // 🚫 This will NOT trigger scroll now
     setFilters({
       query: "",
       categories: [],
@@ -48,30 +74,14 @@ export default function Discover() {
     });
   }, []);
 
-  // 🔥 LOAD RECENT SEARCHES
+  // 🕘 Load recent searches
   useEffect(() => {
     const stored = safeParse("recentSearches") || [];
     const cleaned = stored.filter((s) => s && typeof s === "object");
     setRecent(cleaned);
   }, []);
 
-  // 🔥 SCROLL TO RESULTS (OFFSET FIXED)
-  useEffect(() => {
-    if (filters && resultsRef.current) {
-      const yOffset = -100;
-      const y =
-        resultsRef.current.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth",
-      });
-    }
-  }, [filters]);
-
-  // 🔥 SAVE SEARCH (DEDUP + LIMIT 5)
+  // 💾 Save search
   const saveSearch = (newFilters) => {
     if (!newFilters || typeof newFilters !== "object") return;
 
@@ -93,10 +103,10 @@ export default function Discover() {
       JSON.stringify(updated)
     );
 
-    setRecent(updated); // 🔥 KEEP STATE IN SYNC
+    setRecent(updated);
   };
 
-  // 🔥 NEW LOGIC: detect quiz-based results
+  // 🎯 Detect quiz-based results
   const isFromQuiz = profile && !filters?.query;
 
   return (
@@ -138,7 +148,7 @@ export default function Discover() {
         />
       )}
 
-      {/* 🕘 RECENT SEARCHES (CONDITIONAL) */}
+      {/* 🕘 RECENT SEARCHES */}
       {recent.length > 0 && (
         <div className="bg-cream px-6 pb-16 space-y-16">
           <div className="max-w-6xl mx-auto mb-10">
