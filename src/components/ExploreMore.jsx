@@ -31,10 +31,10 @@ export default function ExploreMore() {
   ];
 
   return (
-    <div className="border-t">
+    <div className="">
 
       {/* Explore Section */}
-      <div className="bg-[#f4ede2] py-14 px-6">
+      <div className="bg-[#f4ede2] py-14 pb-6 md:pb-12 px-6">
         <div className="max-w-6xl mx-auto">
 
           {/* Heading LEFT aligned */}

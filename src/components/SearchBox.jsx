@@ -20,8 +20,8 @@ export default function SearchBox({ onSearch, onOpenFilters }) {
 };
 
   return (
-    <div className="mt-6 flex justify-center">
-      <div className="bg-white/90 backdrop-blur-md rounded-full shadow-xl px-4 py-3 flex items-center gap-3 w-full max-w-2xl">
+    <div className="mt-6 flex justify-center px-2">
+      <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 flex flex-col md:flex-row items-stretch md:items-center gap-3 w-full max--2-2xl">
 
         {/* INPUT */}
         <input
@@ -32,20 +32,21 @@ export default function SearchBox({ onSearch, onOpenFilters }) {
         />
 
         {/* FILTER BUTTON */}
-        <button
-          onClick={onOpenFilters}
-          className="text-sm text-gray-600 hover:text-magenta"
-        >
-          Filters
-        </button>
+       <div className="flex gap-2 w-full md:w-auto">
+  <button
+    onClick={onOpenFilters}
+    className="flex-1 md:flex-none text-sm text-gray-600 hover:text-magenta"
+  >
+    Filters
+  </button>
 
-        {/* SEARCH BUTTON */}
-        <button
-          onClick={handleSearch}
-          className="bg-olive px-5 py-2 rounded-full text-white font-medium hover:bg-gold transition"
-        >
-          Find
-        </button>
+  <button
+    onClick={handleSearch}
+    className="flex-1 md:w-auto bg-olive px-6 py-2 rounded-full text-white font-medium hover:bg-gold transition"
+  >
+    Find →
+  </button>
+</div>
 
       </div>
     </div>

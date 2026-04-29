@@ -12,7 +12,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="bg-cream border-t border-gold/20 mt-16 py-10 px-6">
+    <div className="bg-cream border-t border-gold/20 mt-12 py-10 px-6 pb-28 md:pb-10">
 
       <div className="max-w-5xl mx-auto text-center">
 

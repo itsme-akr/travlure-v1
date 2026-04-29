@@ -245,7 +245,7 @@ export default function ProfileQuiz() {
 
         {/* Q3 (Conditional) */}
         {step === 3 && (
-          <>
+          <div className="mt-6 md:mt-2">
             <h2 className="font-semibold mb-4">
               Any dietary preferences?
             </h2>
@@ -286,12 +286,12 @@ export default function ProfileQuiz() {
                 );
               })}
             </div>
-          </>
+          </div>
         )}
 
         {/* Q4 */}
         {step === 4 && (
-          <>
+          <div className="mt-6 md:mt-0">
             <h2 className="font-semibold mb-4">
               What matters most?
             </h2>
@@ -318,7 +318,8 @@ export default function ProfileQuiz() {
                 );
               })}
             </div>
-          </>
+            </div>
+          
         )}
 
         {/* NAV */}
